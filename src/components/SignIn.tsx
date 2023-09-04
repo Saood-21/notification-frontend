@@ -28,7 +28,7 @@ function SignIn() {
               justifyContent: "center",
             }}
           >
-            <img src="../public/1635144573315.jpeg" alt="Image Description" />
+            <img src="../1635144573315.jpeg" alt="Image Description" />
           </div>
           <Typography variant="h5" gutterBottom>
             Sign In
