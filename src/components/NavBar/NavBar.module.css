@@ -1,0 +1,58 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  padding: 0 20px;
+  background-color: #ffffff;
+}
+  
+.logo img {
+  width: 100px;
+  height:  130px;
+}
+
+.settings button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.settings button:focus {
+  outline: none;
+}
+
+.settings img {
+  height: 50px;
+}
+
+.logout {
+  position: absolute;
+  top: 77px;
+  right: 9px;
+  width: 140px;
+  height: 100px;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logout List {
+  width: '100%';
+  max-width: 360;
+  background-color: ffffff;
+}
+
+.divider {
+  border: 1px solid #ccc;
+}
+
+.logout button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-top: 5px;
+}
