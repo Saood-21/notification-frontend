@@ -1,0 +1,8 @@
+.card {
+  width: 20%;
+  border: 1px solid #e30d0d;
+}
+
+.description{
+  margin-top: 10px !important;
+}
