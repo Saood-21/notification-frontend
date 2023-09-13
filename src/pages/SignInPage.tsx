@@ -1,20 +1,9 @@
-import SignIn from "../components/SignIn";
+import SignInContainer from "../containers/SignInContainer";
 
 function SignInPage() {
   return (
     <>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          minHeight: "10vh",
-          height:"100vh",
-          backgroundColor: "#f0f0f0"
-        }}
-      >
-        <SignIn></SignIn>
-      </div>
+      <SignInContainer></SignInContainer>
     </>
   );
 }

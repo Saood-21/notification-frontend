@@ -1,14 +1,13 @@
 import CreateForm from "./components/CreateForm/CreateForm";
 import SignInPage from "./pages/SignInPage";
-import NavBar from "./components/NavBar";
-import Tile from "./components/Tile";
+import LandingPage from "./pages/LandingPage";
 
 function App() {
   return (
     <>
-      <Tile></Tile>
-      {/* <NavBar></NavBar> */}
-      {/* <SignInPage></SignInPage> */}
+      <SignInPage></SignInPage>
+      <LandingPage></LandingPage>
+      <CreateForm></CreateForm>
     </>
   );
 }

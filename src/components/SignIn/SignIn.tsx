@@ -1,9 +1,11 @@
 import { Container, Typography, TextField, Button, Grid } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 function SignIn() {
+  const navigate = useNavigate()
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    // Add your sign-in logic here
+    navigate('/dashboard')
   };
 
   return (
@@ -42,7 +44,7 @@ function SignIn() {
                   variant="outlined"
                   type="email"
                   required
-                  InputProps={{ sx: { borderRadius: 10 } }}
+                  // InputProps={{ sx: { borderRadius: 10 } }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -52,7 +54,7 @@ function SignIn() {
                   variant="outlined"
                   type="password"
                   required
-                  InputProps={{ sx: { borderRadius: 10 } }}
+                  // InputProps={{ sx: { borderRadius: 10 } }}
                 />
               </Grid>
             </Grid>
@@ -67,12 +69,13 @@ function SignIn() {
               <Button
                 size="large"
                 type="submit"
+                fullWidth
                 variant="contained"
                 color="primary"
                 style={{
                   marginTop: "20px",
-                  borderRadius: "20px",
-                  width: "200px",
+                  // borderRadius: "20px",
+                  // width: "200px",
                 }}
               >
                 Sign In

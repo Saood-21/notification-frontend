@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
 import "./App.css";
 import {
-  CssBaseline,
   ThemeProvider,
   Typography,
   createTheme,
 } from "@mui/material";
+import { RouterProvider } from "react-router-dom";
+import router from "./routes/routes.tsx";
 
 const theme = createTheme({
   typography: {
@@ -19,11 +19,9 @@ const theme = createTheme({
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      {/* //     <CssBaseline /> */}
       <Typography variant="body1" style={{ fontFamily: "Roboto, sans-serif" }}>
-        <App />
+        <RouterProvider router={router}/>
       </Typography>
     </ThemeProvider>
-    {/* <App/> */}
   </React.StrictMode>
 );
