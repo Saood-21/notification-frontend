@@ -3,7 +3,9 @@ import { useState, useEffect, useRef } from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Divider from "@mui/material/Divider";
+import SettingsIcon from "@mui/icons-material/Settings";
 import { useNavigate } from "react-router-dom";
+import { Icon } from "@mui/material";
 
 function NavBar() {
   const navigate = useNavigate();
@@ -36,13 +38,19 @@ function NavBar() {
   }
 
   return (
-    <nav className={styles.navbar}>
+    <nav
+      className={styles.navbar}
+      style={{ boxShadow: "5px 5px 20px rgba(0, 0, 0, 0.2)" }}
+    >
       <div className={styles.logo}>
         <img src="gosaas.svg" alt="Logo" />
       </div>
       <div className={styles.settings}>
         <button onClick={handleSettingsClick}>
-          <img src="settings.gif" alt="Settings" />
+          {/* <img src="settings.gif" alt="Settings" /> */}
+          <Icon>
+            <SettingsIcon /> {/* This is where you specify the icon */}
+          </Icon>
         </button>
         {showLogout && (
           <div className={styles.logout} ref={logoutRef}>

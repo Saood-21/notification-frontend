@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { IconButton } from '@mui/material';
-import { Edit, Delete } from '@mui/icons-material';
-import './Options.css';
+import { useState } from "react";
+import { IconButton } from "@mui/material";
+import { Edit, Delete } from "@mui/icons-material";
+import "./Options.css";
 
 export default function OptionsBar() {
   const [circleActive, setCircleActive] = useState(false);
@@ -30,15 +30,26 @@ export default function OptionsBar() {
 
   return (
     <div className="options-bar">
-      <div className={`circle ${circleActive ? 'active' : ''}`} onClick={handleCircleClick} />
+      <div
+        className={`circle ${circleActive ? "active" : ""}`}
+        onClick={handleCircleClick}
+      />
 
-      <IconButton className="icon-button" onMouseEnter={handleEditMouseEnter} onMouseLeave={handleEditMouseLeave}>
+      <IconButton
+        className="icon-button"
+        onMouseEnter={handleEditMouseEnter}
+        onMouseLeave={handleEditMouseLeave}
+      >
         <Edit className="edit-icon" />
         {showEdit && <span className="edit-text">Edit</span>}
         <span className="sr-only">Edit</span>
       </IconButton>
 
-      <IconButton className="icon-button" onMouseEnter={handleDeleteMouseEnter} onMouseLeave={handleDeleteMouseLeave}>
+      <IconButton
+        className="icon-button"
+        onMouseEnter={handleDeleteMouseEnter}
+        onMouseLeave={handleDeleteMouseLeave}
+      >
         <Delete className="delete-icon" />
         {showDelete && <span className="delete-text">Delete</span>}
         <span className="sr-only">Delete</span>
