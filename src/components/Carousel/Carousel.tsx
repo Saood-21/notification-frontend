@@ -13,7 +13,8 @@ interface appData {
 }
 
 interface Props {
-  onAdd: (appInfo:{name:string, description:string}) => void
+  getItems: () => void;
+  onAdd: (appInfo: { name: string; description: string }) => void;
   apps: {
     pageNumber: number;
     pageSize: number;
@@ -22,7 +23,7 @@ interface Props {
   };
 }
 
-const Carousel = ({ apps, onAdd }: Props) => {
+const Carousel = ({ apps, onAdd, getItems }: Props) => {
   return (
     <>
       <div
@@ -55,7 +56,7 @@ const Carousel = ({ apps, onAdd }: Props) => {
           }}
         >
           {apps.data.map((app) => (
-            <Tile key={app.id} appObject={app} />
+            <Tile getItems={getItems} key={app.id} appObject={app} />
           ))}
         </Box>
       </div>

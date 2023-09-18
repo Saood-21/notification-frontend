@@ -37,7 +37,7 @@ const AppContainer = () => {
 
   return (
     <>
-      <div>{appsData && <Carousel apps={appsData} onAdd={addApp} />}</div>
+      <div>{appsData && <Carousel getItems={getApps} apps={appsData} onAdd={addApp} />}</div>
     </>
   );
 };

@@ -3,7 +3,12 @@ import { IconButton } from "@mui/material";
 import { Edit, Delete } from "@mui/icons-material";
 import "./Options.css";
 
-export default function OptionsBar() {
+interface Props{
+  onDelete: () => void
+}
+
+
+export default function OptionsBar({onDelete}:Props) {
   const [circleActive, setCircleActive] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
@@ -28,6 +33,10 @@ export default function OptionsBar() {
     setShowDelete(false);
   };
 
+  const handleDeleteClick = () => {
+    onDelete()
+  }
+
   return (
     <div className="options-bar">
       <div
@@ -49,6 +58,7 @@ export default function OptionsBar() {
         className="icon-button"
         onMouseEnter={handleDeleteMouseEnter}
         onMouseLeave={handleDeleteMouseLeave}
+        onClick={handleDeleteClick}
       >
         <Delete className="delete-icon" />
         {showDelete && <span className="delete-text">Delete</span>}
