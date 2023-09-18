@@ -1,4 +1,5 @@
 import { useState } from "react";
+import AddIcon from "@mui/icons-material/Add";
 import {
   Button,
   Dialog,
@@ -7,9 +8,14 @@ import {
   TextField,
   Box,
   Typography,
+  Icon,
 } from "@mui/material";
 
-function CreateForm() {
+interface Props{
+  onAdd:(appInfo:{name:string, description:string}) => void
+}
+
+function CreateForm({onAdd}:Props) {
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -26,23 +32,26 @@ function CreateForm() {
     // Perform actions with the form data (e.g., send it to a server)
     console.log("Name:", name);
     console.log("Description:", description);
-
-    // Close the modal after submission
+    onAdd({name:name, description:description})
     handleClose();
   };
 
   return (
-    <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Open Modal
-      </Button>
+    <div style={{width:"30px"}}>
+      <div  onClick={handleClickOpen}>
+        <Icon>
+          <AddIcon style={{fontSize: '30px'}}/>
+        </Icon>
+      </div>
       <Dialog
         open={open}
         onClose={handleClose}
         PaperProps={{ style: { borderRadius: "10px" } }}
       >
         <DialogTitle>
-          <Typography variant="h6" align="center" paddingTop={2} >Add/Edit Application</Typography>
+          <Typography variant="h6" align="center" paddingTop={2}>
+            Add/Edit Application
+          </Typography>
         </DialogTitle>
         <DialogContent>
           <TextField

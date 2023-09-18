@@ -1,7 +1,28 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import Tile from "../Tile";
+import CreateForm from "../CreateForm/CreateForm";
 
-const Carousel = () => {
+interface appData {
+  id: number;
+  name: string;
+  description: string;
+  created_at: string;
+  created_by: string;
+  updated_by: string;
+  is_valid: boolean;
+}
+
+interface Props {
+  onAdd: (appInfo:{name:string, description:string}) => void
+  apps: {
+    pageNumber: number;
+    pageSize: number;
+    count: number;
+    data: appData[];
+  };
+}
+
+const Carousel = ({ apps, onAdd }: Props) => {
   return (
     <>
       <div
@@ -13,7 +34,19 @@ const Carousel = () => {
           boxShadow: "5px 5px 20px rgba(0, 0, 0, 0.2)",
         }}
       >
-        <Typography variant="h4">Application</Typography>
+        <Grid
+          container
+          direction="row"
+          justifyContent="flex-end"
+          alignItems="center"
+        >
+          <Grid item xs={11}>
+            <Typography variant="h4">Application</Typography>
+          </Grid>
+          <Grid container xs={1} justifyContent="flex-end" alignItems="center">
+            <CreateForm onAdd={onAdd}></CreateForm>
+          </Grid>
+        </Grid>
         <Box
           sx={{
             overflow: "auto",
@@ -21,11 +54,9 @@ const Carousel = () => {
             display: "flex",
           }}
         >
-          <Tile />
-          <Tile />
-          <Tile />
-          <Tile />
-          <Tile />
+          {apps.data.map((app) => (
+            <Tile key={app.id} appObject={app} />
+          ))}
         </Box>
       </div>
     </>

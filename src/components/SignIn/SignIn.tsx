@@ -1,11 +1,27 @@
 import { Container, Typography, TextField, Button, Grid } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { FormEvent, useState } from "react";
 
-function SignIn() {
-  const navigate = useNavigate()
-  const handleSubmit = (e: { preventDefault: () => void }) => {
+interface obj {
+  name: string;
+  password: string;
+}
+
+interface Props {
+  onSignIn: (obj: obj) => void;
+}
+
+function SignIn({ onSignIn }: Props) {
+  const [credentials, setCredentials] = useState({
+    name: "",
+    password: "",
+  });
+
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    navigate('/dashboard')
+
+    console.log(credentials);
+    onSignIn(credentials);
+
   };
 
   return (
@@ -13,13 +29,13 @@ function SignIn() {
       style={{
         backgroundColor: "#ffffff",
         paddingTop: "0px",
-        paddingRight: "100px" ,
-        paddingLeft: "100px" ,
+        paddingRight: "100px",
+        paddingLeft: "100px",
         paddingBottom: "100px",
         width: "500px",
         borderBottom: "5px solid blue",
         borderRadius: "10px",
-        boxShadow: "5px 5px 20px rgba(0, 0, 0, 0.2)"
+        boxShadow: "5px 5px 20px rgba(0, 0, 0, 0.2)",
       }}
     >
       <Container component="main" maxWidth="xs">
@@ -40,9 +56,15 @@ function SignIn() {
               <Grid item xs={12}>
                 <TextField
                   fullWidth
-                  label="Email"
+                  onChange={(event) =>
+                    setCredentials({
+                      ...credentials,
+                      name: event.target.value,
+                    })
+                  }
+                  label="Username"
                   variant="outlined"
-                  type="email"
+                  // type="email"
                   required
                   // InputProps={{ sx: { borderRadius: 10 } }}
                 />
@@ -50,6 +72,12 @@ function SignIn() {
               <Grid item xs={12}>
                 <TextField
                   fullWidth
+                  onChange={(event) =>
+                    setCredentials({
+                      ...credentials,
+                      password: event.target.value,
+                    })
+                  }
                   label="Password"
                   variant="outlined"
                   type="password"

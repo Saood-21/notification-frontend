@@ -47,7 +47,6 @@ function NavBar() {
       </div>
       <div className={styles.settings}>
         <button onClick={handleSettingsClick}>
-          {/* <img src="settings.gif" alt="Settings" /> */}
           <Icon>
             <SettingsIcon /> {/* This is where you specify the icon */}
           </Icon>
