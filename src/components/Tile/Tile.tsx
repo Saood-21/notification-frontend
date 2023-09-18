@@ -9,8 +9,9 @@ import styles from "./Tile.module.css";
 import { useState } from "react";
 
 interface Props {
+  onSelect?: (id: number) => void;
   getItems: () => void;
-  appObject: {
+  itemObject: {
     id: number;
     app_id?: number;
     event_id?: number;
@@ -23,16 +24,16 @@ interface Props {
   };
 }
 
-export default function Tile({ appObject, getItems }: Props) {
-  const [appTileInfo, setAppTileInfo] = useState(appObject);
+export default function Tile({ itemObject, getItems, onSelect }: Props) {
+  const [appTileInfo, setAppTileInfo] = useState(itemObject);
   let route;
   const deleteItem = () => {
-    if (appObject.event_id) {
-      route = `notification/${appObject.id}`;
-    } else if (appObject.app_id) {
-      route = `event/${appObject.id}`;
+    if (itemObject.event_id) {
+      route = `notification/${itemObject.id}`;
+    } else if (itemObject.app_id) {
+      route = `event/${itemObject.id}`;
     } else {
-      route = `application/${appObject.id}`;
+      route = `application/${itemObject.id}`;
     }
 
     apiClient
@@ -46,6 +47,16 @@ export default function Tile({ appObject, getItems }: Props) {
       });
   };
 
+  const handleClick = () => {
+    if (onSelect) {
+      onSelect(itemObject.id);
+      console.log(itemObject.id)
+    }
+    else{
+      console.log("rrrrrrrrrrrrrrr")
+    }
+  };
+
   return (
     <div
       style={{
@@ -54,7 +65,7 @@ export default function Tile({ appObject, getItems }: Props) {
         marginRight: "10px",
         marginBottom: "10px",
       }}
-      onClick={() => console.log("yoooooooooo")}
+      onClick={() => {handleClick()}}
     >
       <Card>
         <CardContent>

@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import Carousel from "../components/Carousel/Carousel";
 import apiClient from "../services/api-client";
 
-const AppContainer = () => {
+interface Props {
+  onSelect: (id: number) => void;
+}
+
+const AppContainer = ({onSelect}:Props) => {
   const [appsData, setAppsData] = useState({
     pageNumber: 0,
     pageSize: 0,
@@ -37,7 +41,17 @@ const AppContainer = () => {
 
   return (
     <>
-      <div>{appsData && <Carousel getItems={getApps} apps={appsData} onAdd={addApp} />}</div>
+      <div>
+        {appsData && (
+          <Carousel
+            entity="Applications"
+            getItems={getApps}
+            items={appsData}
+            onAdd={addApp}
+            onSelect={onSelect}
+          />
+        )}
+      </div>
     </>
   );
 };

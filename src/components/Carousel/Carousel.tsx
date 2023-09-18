@@ -2,8 +2,10 @@ import { Box, Grid, Typography } from "@mui/material";
 import Tile from "../Tile";
 import CreateForm from "../CreateForm/CreateForm";
 
-interface appData {
+interface itemData {
   id: number;
+  app_id?: number;
+  event_id?: number;
   name: string;
   description: string;
   created_at: string;
@@ -13,17 +15,19 @@ interface appData {
 }
 
 interface Props {
+  entity: string;
   getItems: () => void;
+  onSelect?: (id: number) => void;
   onAdd: (appInfo: { name: string; description: string }) => void;
-  apps: {
+  items: {
     pageNumber: number;
     pageSize: number;
     count: number;
-    data: appData[];
+    data: itemData[];
   };
 }
 
-const Carousel = ({ apps, onAdd, getItems }: Props) => {
+const Carousel = ({ entity, items, onAdd, onSelect, getItems }: Props) => {
   return (
     <>
       <div
@@ -42,12 +46,14 @@ const Carousel = ({ apps, onAdd, getItems }: Props) => {
           alignItems="center"
         >
           <Grid item xs={11}>
-            <Typography variant="h4">Application</Typography>
+            <Typography variant="h4">{entity}</Typography>
           </Grid>
+
           <Grid container xs={1} justifyContent="flex-end" alignItems="center">
             <CreateForm onAdd={onAdd}></CreateForm>
           </Grid>
         </Grid>
+
         <Box
           sx={{
             overflow: "auto",
@@ -55,8 +61,8 @@ const Carousel = ({ apps, onAdd, getItems }: Props) => {
             display: "flex",
           }}
         >
-          {apps.data.map((app) => (
-            <Tile getItems={getItems} key={app.id} appObject={app} />
+          {items.data.map((item) => (
+            <Tile onSelect={onSelect} getItems={getItems} key={item.id} itemObject={item} />
           ))}
         </Box>
       </div>
