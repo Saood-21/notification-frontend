@@ -22,6 +22,10 @@ function NotificationTemplateForm() {
       body: `${updatedFormData.body}`,
     };
     setPreviewText(preview);
+
+    // const handleSubmit = () => {
+    
+    // }
   };
 
   return (
@@ -63,7 +67,6 @@ function NotificationTemplateForm() {
             />
             <Button
               size="large"
-              type="submit"
               variant="outlined"
               color="primary"
               // onClick={handlePreview}
@@ -76,7 +79,7 @@ function NotificationTemplateForm() {
               type="submit"
               variant="contained"
               color="primary"
-              // onClick={handlePreview}
+              // onClick={handleSubmit}
               style={{ marginTop: "10px", marginLeft: "10px" }}
             >
               Save

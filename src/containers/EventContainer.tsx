@@ -4,9 +4,11 @@ import apiClient from "../services/api-client";
 
 interface Props {
   appId: number;
+  onSelect: (id: number) => void;
+
 }
 
-const EventContainer = ({ appId }: Props) => {
+const EventContainer = ({ appId, onSelect }: Props) => {
   const [eventsData, setEventsData] = useState({
     pageNumber: 0,
     pageSize: 0,
@@ -33,8 +35,9 @@ const EventContainer = ({ appId }: Props) => {
       });
   };
 
-  const addEvent = (eventInfo: { name: string; description: string }) => {
-    apiClient.post("/event", eventInfo).then(() => {
+  const addEvent = (eventInfo: { name: string; description: string; }) => {
+
+    apiClient.post("/event", {...eventInfo, applicationId: appId}).then(() => {
       getEvents();
     });
   };
@@ -48,6 +51,7 @@ const EventContainer = ({ appId }: Props) => {
             getItems={getEvents}
             items={eventsData}
             onAdd={addEvent}
+            onSelect={onSelect}
           />
         )}
       </div>

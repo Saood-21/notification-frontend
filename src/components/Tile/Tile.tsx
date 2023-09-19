@@ -13,7 +13,7 @@ interface Props {
   getItems: () => void;
   itemObject: {
     id: number;
-    app_id?: number;
+    application_id?: number;
     event_id?: number;
     name: string;
     description: string;
@@ -26,13 +26,17 @@ interface Props {
 
 export default function Tile({ itemObject, getItems, onSelect }: Props) {
   const [appTileInfo, setAppTileInfo] = useState(itemObject);
+
   let route;
   const deleteItem = () => {
     if (itemObject.event_id) {
       route = `notification/${itemObject.id}`;
-    } else if (itemObject.app_id) {
+
+    } else if (itemObject.application_id) {
       route = `event/${itemObject.id}`;
     } else {
+      console.log(itemObject)
+
       route = `application/${itemObject.id}`;
     }
 

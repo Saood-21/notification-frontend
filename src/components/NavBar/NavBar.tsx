@@ -40,7 +40,7 @@ function NavBar() {
   return (
     <nav
       className={styles.navbar}
-      style={{ position:"fixed", width:"96%", boxShadow: "5px 5px 5px rgba(0, 0, 0, 0.2)" }}
+      style={{ position:"fixed", width:"97%", boxShadow: "5px 5px 5px rgba(0, 0, 0, 0.2)" }}
     >
       <div className={styles.logo}>
         <img src="gosaas.svg" alt="Logo" />

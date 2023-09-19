@@ -1,10 +1,12 @@
 import { Box, Grid, Typography } from "@mui/material";
 import Tile from "../Tile";
 import CreateForm from "../CreateForm/CreateForm";
+import NotificationTemplateContainer from "../../containers/NotificationTemplateContainer";
+import SearchBar from "../SearchBar/SearchBar";
 
 interface itemData {
   id: number;
-  app_id?: number;
+  application_id?: number;
   event_id?: number;
   name: string;
   description: string;
@@ -18,7 +20,7 @@ interface Props {
   entity: string;
   getItems: () => void;
   onSelect?: (id: number) => void;
-  onAdd: (appInfo: { name: string; description: string }) => void;
+  onAdd: (appInfo: { name: string; description: string;}) => void;
   items: {
     pageNumber: number;
     pageSize: number;
@@ -48,9 +50,12 @@ const Carousel = ({ entity, items, onAdd, onSelect, getItems }: Props) => {
           <Grid item xs={11}>
             <Typography variant="h4">{entity}</Typography>
           </Grid>
+          {/* <Grid item xs={7}>
+            <SearchBar/>
+          </Grid> */}
 
           <Grid container xs={1} justifyContent="flex-end" alignItems="center">
-            <CreateForm onAdd={onAdd}></CreateForm>
+            {entity==="Notifications"?<NotificationTemplateContainer/>:<CreateForm onAdd={onAdd}></CreateForm>}
           </Grid>
         </Grid>
 
